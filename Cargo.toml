@@ -1,0 +1,18 @@
+[package]
+name = "web_app"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[workspace]
+resolver = "2"
+members = [
+    "frontend/rust-interface",
+    "glue",
+    "ingress",
+    "nanoservices/auth/dal",
+    "nanoservices/to_do/core",
+    "nanoservices/to_do/dal",
+    "nanoservices/to_do/networking/actix_server",
+]

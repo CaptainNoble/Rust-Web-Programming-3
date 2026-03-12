@@ -1,0 +1,65 @@
+// PROGRAM OVERVIEW
+We now have a singular Rust binary that runs migration scripts on the database,
+serves the frontend JavaScript app, and serves backend API endpoints to the frontend application
+
+
+// CURL COMMANDS
+
+// GET
+curl -X GET http://127.0.0.1:8080/api/v1/get/all
+
+//--------------------------------------------------
+// CREATE
+curl -X POST http://127.0.0.1:8080/api/v1/create \
+     -H "Content-Type: application/json" \
+     -H "token: some token" \
+     -d '{"title": "writing", "status": "PENDING"}'
+
+// Including Token
+curl -X POST http://127.0.0.1:8080/api/v1/create \
+     -H "Content-Type: application/json" \
+     -H "token: some token" \
+     -d '{"title": "coding", "status": "PENDING"}'
+
+// Should error out - Status is wrong
+curl -X POST http://127.0.0.1:8080/api/v1/create \
+     -H "Content-Type: application/json" \
+     -H "token: some token" \
+     -d '{"title": "writing", "status": "test"}'
+
+//--------------------------------------------------
+// UPDATE (No ID, should error)
+curl -X PUT http://127.0.0.1:8080/api/v1/update \
+     -H "Content-Type: application/json" \
+     -d '{"title": "coding", "status": "DONE"}'
+
+// Including ID
+curl -X PUT http://127.0.0.1:8080/api/v1/update \
+     -H "Content-Type: application/json" \
+     -d '{"id":1, "title": "coding", "status": "DONE"}'
+
+curl -X PUT http://127.0.0.1:8080/api/v1/update \
+     -H "Content-Type: application/json" \
+     -d '{"id":1, "title": "coding", "status": "PENDING"}'
+
+//--------------------------------------------------
+// DELETE
+curl -X DELETE http://127.0.0.1:8080/api/v1/delete/thinking
+
+
+// WASM - Make sure this is ran to remove the button error
+npm run wasm
+npm install
+npm run build
+
+// SQLX Initialize the DB
+cargo install sqlx-cli  // Make sure sqlx is installed
+sqlx migrate add init_schema
+export DATABASE_URL=postgres://<user>:<password>@localhost/to_do
+sqlx migrate run
+
+// Postgres
+docker exec -it postgres_to_do psql to_do -U jnoble
+
+// Pipe sql file into postgres container
+cat schemaPS.sql | docker exec -i postgres psql -U jnoble -d CapitalProjects
