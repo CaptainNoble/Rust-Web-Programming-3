@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# navigate to directory
-
 
 # navigate to directory
 cd ../..
