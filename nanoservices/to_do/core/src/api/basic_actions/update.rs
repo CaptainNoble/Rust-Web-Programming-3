@@ -1,6 +1,6 @@
-use dal::to_do_items::schema::ToDoItem;
-use dal::to_do_items::transactions::update::UpdateOne;
 use glue::errors::NanoServiceError;
+use to_do_dal::to_do_items::schema::ToDoItem;
+use to_do_dal::to_do_items::transactions::update::UpdateOne;
 
 // use crate::structs::ToDoItem;
 // use dal::json_file::{get_all as get_all_handle, save_all};

@@ -1,8 +1,8 @@
 use actix_cors::Cors;
-use actix_server::api::views_factory as to_do_views_factory;
 use actix_web::{App, HttpRequest, HttpResponse, HttpServer, Responder, web};
 use rust_embed::RustEmbed;
 use std::path::Path;
+use to_do_actix_server::api::views_factory as to_do_views_factory;
 use to_do_dal::migrations::run_migrations as run_todo_migrations;
 
 async fn index() -> HttpResponse {

@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+tokio = "1.50.0"
 
 [workspace]
 resolver = "2"
@@ -11,8 +12,10 @@ members = [
     "frontend/rust-interface",
     "glue",
     "ingress",
-    "nanoservices/auth/dal",
     "nanoservices/to_do/core",
     "nanoservices/to_do/dal",
     "nanoservices/to_do/networking/actix_server",
+    "nanoservices/auth/dal",
+    "nanoservices/auth/core",
+    "nanoservices/auth/networking/actix_server",
 ]

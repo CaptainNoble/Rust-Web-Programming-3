@@ -3,7 +3,7 @@ pub mod delete;
 pub mod get;
 pub mod update;
 use actix_web::web::{ServiceConfig, delete, get, post, put, scope};
-use dal::to_do_items::descriptors::SqlxPostGresDescriptor;
+use to_do_dal::to_do_items::descriptors::SqlxPostGresDescriptor;
 
 pub fn basic_actions_factory(app: &mut ServiceConfig) {
     app.service(

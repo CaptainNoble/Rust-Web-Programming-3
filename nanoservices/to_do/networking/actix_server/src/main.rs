@@ -1,6 +1,7 @@
-use actix_web::{App, HttpServer};
 mod api;
-use dal::migrations::run_migrations;
+use actix_web::{App, HttpServer};
+//use dal::migrations::run_migrations;
+use to_do_dal::migrations::run_migrations;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {

@@ -1,7 +1,7 @@
 use actix_web::{HttpRequest, HttpResponse};
-use core::api::basic_actions::{delete::delete as delete_core, get::get_all as get_all_core};
-use dal::to_do_items::transactions::{delete::DeleteOne, get::GetAll};
 use glue::errors::{NanoServiceError, NanoServiceErrorStatus};
+use to_do_core::api::basic_actions::{delete::delete as delete_core, get::get_all as get_all_core};
+use to_do_dal::to_do_items::transactions::{delete::DeleteOne, get::GetAll};
 
 pub async fn delete_by_name<T: DeleteOne + GetAll>(
     req: HttpRequest,

@@ -1,8 +1,8 @@
 use actix_web::{HttpResponse, web::Json};
-use core::api::basic_actions::{create::create as create_core, get::get_all as get_all_core};
-use dal::to_do_items::schema::NewToDoItem;
-use dal::to_do_items::transactions::{create::SaveOne, get::GetAll};
 use glue::{errors::NanoServiceError, token::HeaderToken};
+use to_do_core::api::basic_actions::{create::create as create_core, get::get_all as get_all_core};
+use to_do_dal::to_do_items::schema::NewToDoItem;
+use to_do_dal::to_do_items::transactions::{create::SaveOne, get::GetAll};
 
 pub async fn create<T: SaveOne + GetAll>(
     _token: HeaderToken,

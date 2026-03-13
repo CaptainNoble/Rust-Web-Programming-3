@@ -1,5 +1,5 @@
 [package]
-name = "dal"
+name = "to-do-dal"
 version = "0.1.0"
 edition = "2024"
 
