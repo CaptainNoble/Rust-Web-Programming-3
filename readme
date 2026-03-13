@@ -46,6 +46,19 @@ curl -X PUT http://127.0.0.1:8080/api/v1/update \
 // DELETE
 curl -X DELETE http://127.0.0.1:8080/api/v1/delete/thinking
 
+//--------------------------------------------------
+// CREATE USER
+curl -X POST http://0.0.0.0:8001/api/v1/users/create \
+    -H "Content-Type: application/json" \
+    -d '{
+    "email": "test@gmail.com",
+    "password": "password"}'
+
+//--------------------------------------------------
+// GET USER
+curl -u test@gmail.com:password -X GET \
+http://0.0.0.0:8001/api/v1/auth/login
+
 
 // WASM - Make sure this is ran to remove the button error
 npm run wasm

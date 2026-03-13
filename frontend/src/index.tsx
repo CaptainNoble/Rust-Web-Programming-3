@@ -9,6 +9,7 @@ import init, {
     rust_generate_button_text,
 } from "../rust-interface/pkg/rust_interface.js";
 import { Loader2, CheckCircle2, ListTodo, AlertCircle } from "lucide-react";
+import { LoginForm } from "./components/LoginForm.js";
 
 const App = () => {
     const [data, setData] = useState<ToDoItems | null>(null);
@@ -17,6 +18,14 @@ const App = () => {
     const [RustGenerateButtonText, setRustGenerateButtonText] = useState<
         ((input: string) => string) | null
     >(null);
+    const [loggedin, setLoggedin] = useState<boolean>(
+        localStorage.getItem("token") !== null,
+    );
+
+    function setToken(token: string) {
+        localStorage.setItem("token", token);
+        setLoggedin(true);
+    }
 
     function reRenderItems(response: any) {
         if (response.error) {
@@ -50,10 +59,14 @@ const App = () => {
                 setError("Invalid response");
             }
         };
-        if (wasmReady) {
+        if (wasmReady && loggedin) {
             fetchData();
         }
-    }, [wasmReady]);
+    }, [wasmReady, loggedin]);
+
+    if (localStorage.getItem("token") === null) {
+        return <LoginForm setToken={setToken} />;
+    }
 
     if (error) {
         return (
