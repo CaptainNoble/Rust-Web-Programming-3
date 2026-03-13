@@ -6,7 +6,7 @@ edition = "2024"
 [dependencies]
 actix-web = { version = "4.12.1", optional = true}
 futures = "0.3.31"
-jsonwebtoken = "10.3.0"
+jsonwebtoken = {version = "10.3.0", features = ["aws_lc_rs"]}
 serde = { version = "1.0.228", features = ["derive"] }
 thiserror = "2.0.17"
 

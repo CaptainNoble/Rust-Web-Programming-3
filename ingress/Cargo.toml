@@ -9,6 +9,9 @@ actix-web = "4.12.1"
 mime_guess = "2.0.5"
 rust-embed = "8.9.0"
 tokio = { version = "1.48.0", features = ["macros", "rt-multi-thread"] }
-to-do-actix-server = { path = "../nanoservices/to_do/networking/actix_server"}
+
+to-do-server = { path = "../nanoservices/to_do/networking/actix_server", package = "to-do-actix-server"}
 to-do-dal = {path = "../nanoservices/to_do/dal", features = ["sqlx-postgres"]}
-auth-actix-server = { path = "../nanoservices/auth/networking/actix_server" }
+
+auth-actix-server = { path = "../nanoservices/auth/networking/actix_server", package = "auth-actix-server"}
+auth-dal = { path = "../nanoservices/auth/dal", package = "auth-dal"}

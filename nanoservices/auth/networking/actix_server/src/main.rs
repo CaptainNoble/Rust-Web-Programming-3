@@ -1,4 +1,5 @@
 mod api;
+mod extract_auth;
 use actix_web::{App, HttpServer};
 use auth_dal::migrations::run_migrations;
 
